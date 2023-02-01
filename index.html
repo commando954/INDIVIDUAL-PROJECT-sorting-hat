@@ -19,18 +19,18 @@
   <p id="information">Please enter your information below. You will be randomly put into one of four schools for classes.</p>
 
   <div id="forms">
-    <h2 id="center">Enter First Year's Name</h2>
+    <h2 class="center" id="Enter-first-name-text"><b>Enter First Year's Name</b></h2>
     <div id="enter-name">
       <form>
         <div class="info-input">
           <label for="exampleInputName">Student: </label>
-          <input type="text" class="placeholder-box" id="name" placeholder="William Triggs">
+          <input type="text" class="placeholder-box" id="studentName" placeholder="William Triggs">
           <button type="submit" id="form-button">Sort!</button> 
         </div>
       </form>
     </div>
 
-    <p class="center">Filter Students</p>
+    <p class="center" id="filter-students-text"><b>Filter Students</b></p>
       <div class="filter-list">
         <button class="selector" id="all-btn">All</button>
         <button class="selector" id="Gryffindor-btn">Gryffindor</button>
@@ -42,12 +42,32 @@
 
   <div id="student-board">
     <div id="admited-students">
-      <p>First Year's</p>
+      <p><b>First Year's</b></p>
       <div id="students-list"></div>
     </div>
 
     <div id="expelled-students">
-      <p>He Who Must Not Be Named's Army</p>
+      <p><b>He Who Must Not Be Named's Army</b></p>
+      <div id="expelled-students-list">
+        <div class="card" style="max-width: 200px" >
+          <img src="Flags/the-dark-mark.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text"><b>Danny</b> went over to the dark side.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width: 200px">
+          <img src="Flags/the-dark-mark.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text"><b>Kumar</b> went over to the dark side.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width: 200px">
+          <img src="Flags/the-dark-mark.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text"><b>Meliton</b> went over to the dark side.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

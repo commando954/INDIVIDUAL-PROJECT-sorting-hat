@@ -82,16 +82,16 @@ const cardsOnDom = (array) => {
   let domString = ""
   for (const student of array) {
     domString +=
-    `<div class="card" style="max-width: 540px;">
+    `<div class="card" style="max-width: 350px;">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="${student.imageUrl}" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">${student.name}</h5>
+          <h5 class="card-title"><b>${student.name}</b></h5>
           <p class="card-text house-${student.house}">${student.house}</p>
-          <button class="btn btn-danger" id="expel--${student.id}">Expel</button>
+          <button class="btn btn-danger expelBtn" id="expel--${student.id}">Expel</button>
         </div>
       </div>
     </div>
@@ -180,10 +180,62 @@ submitButton.addEventListener('click', createStudent);
     } 
     return studentSorting;
 */
+const listOfHouses = ['Gryffindor', 'Hufflepuff', 'Slytherin', 'Ravenclaw'];
+const housedStudents = [];
+const expelledStudents = [];
+
+let studentCounter = 13;
+const name = document.querySelector('#studentName');
+
   const createStudent = (event) => {
     event.preventDefault();
+    const nameImput = studentName.value;
+    const newStudent = {
+      name: nameImput,
+      house: listOfHouses[Math.floor(Math.random()*listOfHouses.length)],
+      id: `student${studentCounter}`,
+    };
+  if (newStudent.house === 'Gryffindor') {
+    newStudent.flag = 'Flags/GD.jpg';
+  } else if (newStudent.house === 'Hufflepuff') {
+    newStudent.flag = 'Flags/HP.jpg';
+  } else if (newStudent.house === 'Ravenclaw') {
+    newStudent.flag = 'Flags/RC.jpg';
+  } else {
+    newStudent.flag = 'Flags/SL.jpg';
+  };
+  housedStudents.push(newStudent);
+  studentCounter++;
+  renderToDom('students-list', nameImput);
+  cardsOnDom(housedStudents, 'students-list');
+  addDeleteEvents();
+};
 
-  const sortButton = document.querySelector('#form-button');
+const expelFunction = (event) => {
+  const buttonId = event.target.id;
+  housedStudents.forEach((student, index) => {
+    if (student.id === buttonId) {
+      student.flag = 'Flags/the-dark-mark.jpg';
+      expelledStudents.push(student);
+      housedStudents.splice(index, 1);
+      student.house = 'VoldArmy';
+    };
+  });
+  cardsOnDom(housedStudents, 'students-list');
+  cardsOnDom(expelledStudents, 'expelled-students-list');
+  addDeleteEvents();
+}
+
+
+
+
+const addDeleteEvents = () => {
+  const expelButton = document.querySelector('.expelBtn');
+  for (let i = 0; i < expelButton.length; i++) {
+    expelButton[i].addEventListener('click', expelFunction)
+  }
+}
+  /* const sortButton = document.querySelector('#form-button');
   sortButton.addEventListener('click', () => {
     const nameImput = document.querySelector('#name');
     const newStudent = {
@@ -211,7 +263,7 @@ studentDiv.addEventListener('click', (event) => {
 
   cardsOnDom(students);
 });
-
+*/
 
 const startApp = () => {
     cardsOnDom(students);
