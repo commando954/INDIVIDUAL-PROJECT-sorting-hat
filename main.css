@@ -1,7 +1,7 @@
 body {
   background-color: #e9ecef;
   color: black;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Harry Potter', sans-serif;
 }
 
 #title {
@@ -71,7 +71,6 @@ body {
   border: none;
   border-radius: 3px 0 0 3px;
   color: white;
-  font-weight: bold;
   padding: 5px;
  }
 
@@ -79,7 +78,6 @@ body {
   background-color: #dd3444;
   border: none;
   color: white;
-  font-weight: bold;
   padding: 5px;
  }
 
@@ -87,7 +85,6 @@ body {
   color: black;
   border: none;
   background-color: #ffc106;
-  font-weight: bold;
   padding: 5px;
 }
 
@@ -95,7 +92,6 @@ body {
   background-color: #007bfe;
   border: none;
   color: white;
-  font-weight: bold;
   padding: 5px;
  }
 
@@ -103,7 +99,6 @@ body {
   background-color: #28a745;
   border: none;
   color: white;
-  font-weight: bold;
   padding: 5px;
   border-radius: 0 3px 3px 0;
  }
