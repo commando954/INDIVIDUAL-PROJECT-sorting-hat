@@ -5,10 +5,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorting Hat Project</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
+  <div id="title">
+    <h1>Registration form for first year students</h1>
+    <p>Based off of the sorting hat from Harry Potter</p>
+  </div>
 
+  <p id="information">Please enter your information below. You will be randomly put into one of four schools for classes.</p>
+
+  <div id="forms">
+    <h2 id="center">Enter First Year's Name</h2>
+    <div id="enter-name">
+      <form>
+        <div class="info-input">
+          <label for="exampleInputName">Student: </label>
+          <input type="text" class="placeholder-box" id="name" placeholder="William Triggs">
+          <button type="submit" id="form-button">Sort!</button> 
+        </div>
+      </form>
+    </div>
+
+    <p class="center">Filter Students</p>
+      <div class="filter-list">
+        <button class="selector" id="all-btn">All</button>
+        <button class="selector" id="Gryffindor-btn">Gryffindor</button>
+        <button class="selector" id="Hufflepuff-btn">Hufflepuff</button>
+        <button class="selector" id="Ravenclaw-btn">Ravenclaw</button>
+        <button class="selector" id="Slytherin-btn">Slytherin</button>
+      </div>
+  </div>
+
+  <div id="student-board">
+    <div id="admited-students">
+      <p>First Year's</p>
+      <div id="students-list"></div>
+    </div>
+
+    <div id="expelled-students">
+      <p>He Who Must Not Be Named's Army</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
 </html>
