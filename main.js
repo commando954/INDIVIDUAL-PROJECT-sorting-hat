@@ -1,3 +1,6 @@
+// This is a data structure
+// [] = array
+// {} = object
 const students = [
   {
     id: 1,
@@ -73,11 +76,23 @@ const students = [
   },
 ];
 
+
 const renderToDom = (divId, htmlToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = htmlToRender;
 };
+/*
+const startButton = document.querySelector('#start-button');
+startButton.addEventListener('click', showStudentEntryForm);
 
+const hideStudentEntryForm = () => {
+  document.querySelector('#forms').style.display = 'none';
+};
+
+const showStudentEntryForm = () => {
+  document.querySelector('#forms').style.display = 'block';
+};
+*/
 const cardsOnDom = (array) => {
   let domString = ""
   for (const student of array) {
@@ -141,19 +156,41 @@ renderToDom("#students-list", domString);
     cardsOnDom(allSlytherin);
   });
 
-  /* create new student
+
+  //create new student
   const createStudent = (event) => {
     event.preventDefault();
-  
-  const name = document.querySelector('#name');
-  // const house = document.querySelector('#house');
-  // const imageUrl = document.querySelector('#imageUrl');
 
+    
+  
+  const name = document.querySelector('#studentName');
+  const house = '';
+  const imageUrl = '';
+
+  const studentSorting = Math.floor((Math.random() * 4) + 1);
+   console.log(studentSorting)
+    if (studentSorting === 1) {
+      house = 'Gryffindor'
+      imageUrl = 'Flags/GD.jpg'
+      console.log(house)
+    } else if (studentSorting === 2) {
+      house = 'Hufflepuff'
+      imageUrl = 'Flags/HP.jpg'
+      console.log(house)
+    } else if (studentSorting === 3) {
+      house = 'Ravenclaw'
+      imageUrl = 'Flags/RC.jpg'
+      console.log(house)
+    } else if (studentSorting === 4) {
+      house = 'Slytherin'
+      imageUrl = 'Flags/SL.jpg'
+      console.log(house)
+    }
 
   const newStudent = {
-    name: name.value
-    //house: house.value,
-    //imageUrl: imageUrl.value
+    name: name.value,
+    house: house.value,
+    imageUrl: imageUrl.value
   };
 
   students.push(newStudent);
@@ -162,24 +199,8 @@ renderToDom("#students-list", domString);
 const submitButton = document.querySelector("#form-button");
 submitButton.addEventListener('click', createStudent);
 
-   const studentSorting = Math.floor((Math.random() * 5) + 1);
-    //let gryffindor = 1;
-    //let hufflepuff = 2;
-    //let ravenclaw = 3;
-    //let slytherin = 4; 
-    if (studentSorting === 1) {
-      ${students.house} = 'Gryffindor';
-    } else if (studentSorting === 2) {
-      ${students.house} = 'Hufflepuff';
-    } else if (studentSorting === 3) {
-      ${students.house} = 'Ravenclaw';
-    } else if (studentSorting === 4) {
-      ${students.house} = 'Slytherin';
-    } else {
-      return console.log("error");
-    } 
-    return studentSorting;
-*/
+   
+/*
 const listOfHouses = ['Gryffindor', 'Hufflepuff', 'Slytherin', 'Ravenclaw'];
 const housedStudents = [];
 const expelledStudents = [];
@@ -235,7 +256,7 @@ const addDeleteEvents = () => {
     expelButton[i].addEventListener('click', expelFunction)
   }
 }
-  /* const sortButton = document.querySelector('#form-button');
+   const sortButton = document.querySelector('#form-button');
   sortButton.addEventListener('click', () => {
     const nameImput = document.querySelector('#name');
     const newStudent = {
@@ -247,7 +268,7 @@ const addDeleteEvents = () => {
   }
   )
   }
-  
+*/
 
 //Expel student
 const studentDiv = document.querySelector('#students-list');
@@ -263,11 +284,12 @@ studentDiv.addEventListener('click', (event) => {
 
   cardsOnDom(students);
 });
-*/
+
 
 const startApp = () => {
     cardsOnDom(students);
-  }
+    //hideStudentEntryForm();
+  };
   
   startApp();
   
