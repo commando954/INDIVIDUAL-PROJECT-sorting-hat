@@ -76,23 +76,35 @@ const students = [
   },
 ];
 
-
+// Render to DOM utility function
 const renderToDom = (divId, htmlToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = htmlToRender;
 };
-/*
-const startButton = document.querySelector('#start-button');
-startButton.addEventListener('click', showStudentEntryForm);
+const form = document.querySelector("form")
 
-const hideStudentEntryForm = () => {
-  document.querySelector('#forms').style.display = 'none';
+const showStudentEntryForm = (event) => {
+  event.preventDefault()
+  const domString =
+  `<h2 class="center" id="Enter-first-name-text"><b>Enter First Year's Name</b></h2>
+  <div id="enter-name">
+    <form>
+      <div class="info-input">
+        <label for="exampleInputName">Student: </label>
+        <input type="text" class="placeholder-box" id="studentName" placeholder="William Triggs">
+        <button type="submit" id="form-button">Sort!</button> 
+      </div>
+    </form>
+  </div>`
+  renderToDom('#forms', domString);
+
+  document
+    .querySelector('#form-button')
+    .addEventListener('click', createStudent);
 };
 
-const showStudentEntryForm = () => {
-  document.querySelector('#forms').style.display = 'block';
-};
-*/
+document.querySelector('#start-button').addEventListener('click', showStudentEntryForm);
+
 const cardsOnDom = (array) => {
   let domString = ""
   for (const student of array) {
@@ -158,48 +170,46 @@ renderToDom("#students-list", domString);
 
 
   //create new student
+
+
   const createStudent = (event) => {
     event.preventDefault();
 
-    
-  
-  const name = document.querySelector('#studentName');
-  const house = '';
-  const imageUrl = '';
+  //const name = document.querySelector('#studentName');
+  //const house = '';
+  //const imageUrl = '';
 
-  const studentSorting = Math.floor((Math.random() * 4) + 1);
-   console.log(studentSorting)
+  const randNum = Math.floor((Math.random() * 4) + 1);
+    const studentSorting = students[randNum];
+    const newStudent = {
+      id: students.length + 2,
+      name: document.querySelector('#studentName').value,
+      house: studentSorting.house,
+      imageUrl: studentSorting.imageUrl
+    };
+   /*console.log(studentSorting)
     if (studentSorting === 1) {
-      house = 'Gryffindor'
-      imageUrl = 'Flags/GD.jpg'
+      house = "Gryffindor"
+      imageUrl = "Flags/GD.jpg"
       console.log(house)
     } else if (studentSorting === 2) {
-      house = 'Hufflepuff'
-      imageUrl = 'Flags/HP.jpg'
+      house = "Hufflepuff"
+      imageUrl = "Flags/HP.jpg"
       console.log(house)
     } else if (studentSorting === 3) {
-      house = 'Ravenclaw'
-      imageUrl = 'Flags/RC.jpg'
+      house = "Ravenclaw"
+      imageUrl = "Flags/RC.jpg"
       console.log(house)
     } else if (studentSorting === 4) {
-      house = 'Slytherin'
-      imageUrl = 'Flags/SL.jpg'
+      house = "Slytherin"
+      imageUrl = "Flags/SL.jpg"
       console.log(house)
     }
-
-  const newStudent = {
-    name: name.value,
-    house: house.value,
-    imageUrl: imageUrl.value
-  };
-
+    */
   students.push(newStudent);
   cardsOnDom(students);
 }; 
-const submitButton = document.querySelector("#form-button");
-submitButton.addEventListener('click', createStudent);
 
-   
 /*
 const listOfHouses = ['Gryffindor', 'Hufflepuff', 'Slytherin', 'Ravenclaw'];
 const housedStudents = [];
@@ -288,7 +298,6 @@ studentDiv.addEventListener('click', (event) => {
 
 const startApp = () => {
     cardsOnDom(students);
-    //hideStudentEntryForm();
   };
   
   startApp();
