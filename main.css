@@ -13,11 +13,19 @@ body {
 
 #information {
   text-align: center;
-  padding-top: 20px;
 }
 
 #start-button {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  border: none;
+  border-bottom: 3px solid black;
+  padding: 5px;
+  background-color: #e9ecef;
+}
+
+#start-button-decoration {
   display: flex;
   justify-content: center;
 }
@@ -29,7 +37,8 @@ body {
 #forms {
   background-color: white;
   padding-top: 10px;
-  margin: 40px;
+  margin: 40px 40px 1px 40px;
+  border-radius: 3px 3px 0 0;
 }
 
 #Enter-first-name-text {
@@ -47,6 +56,13 @@ body {
 
  .placeholder-box {
   width: 600px;
+ }
+
+ .filter {
+  background-color: white;
+  padding-top: 10px;
+  margin: 1px 40px 40px 40px ;
+  border-radius: 0 0 3px 3px;
  }
 
  .filter-list {
