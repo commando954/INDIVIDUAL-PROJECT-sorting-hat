@@ -175,10 +175,6 @@ renderToDom("#students-list", domString);
   const createStudent = (event) => {
     event.preventDefault();
 
-  //const name = document.querySelector('#studentName');
-  //const house = '';
-  //const imageUrl = '';
-
   const randNum = Math.floor((Math.random() * 4) + 1);
     const studentSorting = students[randNum];
     const newStudent = {
@@ -187,28 +183,11 @@ renderToDom("#students-list", domString);
       house: studentSorting.house,
       imageUrl: studentSorting.imageUrl
     };
-   /*console.log(studentSorting)
-    if (studentSorting === 1) {
-      house = "Gryffindor"
-      imageUrl = "Flags/GD.jpg"
-      console.log(house)
-    } else if (studentSorting === 2) {
-      house = "Hufflepuff"
-      imageUrl = "Flags/HP.jpg"
-      console.log(house)
-    } else if (studentSorting === 3) {
-      house = "Ravenclaw"
-      imageUrl = "Flags/RC.jpg"
-      console.log(house)
-    } else if (studentSorting === 4) {
-      house = "Slytherin"
-      imageUrl = "Flags/SL.jpg"
-      console.log(house)
-    }
-    */
+
   students.push(newStudent);
   cardsOnDom(students);
-}; 
+  document.querySelector('#studentName').value = '';
+};
 
 /*
 const listOfHouses = ['Gryffindor', 'Hufflepuff', 'Slytherin', 'Ravenclaw'];
