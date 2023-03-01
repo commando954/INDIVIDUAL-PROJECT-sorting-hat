@@ -82,6 +82,7 @@ const renderToDom = (divId, htmlToRender) => {
   selectedDiv.innerHTML = htmlToRender;
 };
 const form = document.querySelector("form")
+const expelledStudents = [];
 
 const showStudentEntryForm = (event) => {
   event.preventDefault()
@@ -125,9 +126,10 @@ const cardsOnDom = (array) => {
   </div>`;
   }
 renderToDom("#students-list", domString);
+// add the event listener for the retire button! After you render!
 document.querySelector("#students-list").addEventListener("click", expelStudent);
 };
-  const expelledStudents = [];
+  
   const filter = (students, houseString) => {
     const studentsArray = [];
 
@@ -192,6 +194,7 @@ document.querySelector("#students-list").addEventListener("click", expelStudent)
 
 // Voldemort army domString/cards
 const voldsArmy = (array) => {
+ // array.preventDefault();
   let domString = "";
   for (const student of array) {
     domString += 
@@ -223,7 +226,7 @@ const expelStudent = (event) => {
     expelledStudents.push(expelStudents);
 
     // Render both of our arrays! Retired and regular.
-    voldsArmy(expelStudent);
+    voldsArmy(expelStudents);
     cardsOnDom(students);
   }
 };
