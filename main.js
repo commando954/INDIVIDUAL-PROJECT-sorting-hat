@@ -122,11 +122,12 @@ const cardsOnDom = (array) => {
         </div>
       </div>
     </div>
-  </div>`
+  </div>`;
   }
 renderToDom("#students-list", domString);
-}
-
+document.querySelector("#students-list").addEventListener("click", expelStudent);
+};
+  const expelledStudents = [];
   const filter = (students, houseString) => {
     const studentsArray = [];
 
@@ -189,90 +190,43 @@ renderToDom("#students-list", domString);
   document.querySelector('#studentName').value = '';
 };
 
-/*
-const listOfHouses = ['Gryffindor', 'Hufflepuff', 'Slytherin', 'Ravenclaw'];
-const housedStudents = [];
-const expelledStudents = [];
-
-let studentCounter = 13;
-const name = document.querySelector('#studentName');
-
-  const createStudent = (event) => {
-    event.preventDefault();
-    const nameImput = studentName.value;
-    const newStudent = {
-      name: nameImput,
-      house: listOfHouses[Math.floor(Math.random()*listOfHouses.length)],
-      id: `student${studentCounter}`,
-    };
-  if (newStudent.house === 'Gryffindor') {
-    newStudent.flag = 'Flags/GD.jpg';
-  } else if (newStudent.house === 'Hufflepuff') {
-    newStudent.flag = 'Flags/HP.jpg';
-  } else if (newStudent.house === 'Ravenclaw') {
-    newStudent.flag = 'Flags/RC.jpg';
-  } else {
-    newStudent.flag = 'Flags/SL.jpg';
-  };
-  housedStudents.push(newStudent);
-  studentCounter++;
-  renderToDom('students-list', nameImput);
-  cardsOnDom(housedStudents, 'students-list');
-  addDeleteEvents();
+// Voldemort army domString/cards
+const voldsArmy = (array) => {
+  let domString = "";
+  for (const student of array) {
+    domString += 
+    `<div class="card" style="max-width: 200px" >
+      <img src="Flags/the-dark-mark.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text"><b>${student.name}</b> went over to the dark side.</p>
+      </div>
+    </div>`;
+  }
+  renderToDom("#expelled-students-list", domString);
 };
 
-const expelFunction = (event) => {
-  const buttonId = event.target.id;
-  housedStudents.forEach((student, index) => {
-    if (student.id === buttonId) {
-      student.flag = 'Flags/the-dark-mark.jpg';
-      expelledStudents.push(student);
-      housedStudents.splice(index, 1);
-      student.house = 'VoldArmy';
-    };
-  });
-  cardsOnDom(housedStudents, 'students-list');
-  cardsOnDom(expelledStudents, 'expelled-students-list');
-  addDeleteEvents();
-}
-
-
-
-
-const addDeleteEvents = () => {
-  const expelButton = document.querySelector('.expelBtn');
-  for (let i = 0; i < expelButton.length; i++) {
-    expelButton[i].addEventListener('click', expelFunction)
-  }
-}
-   const sortButton = document.querySelector('#form-button');
-  sortButton.addEventListener('click', () => {
-    const nameImput = document.querySelector('#name');
-    const newStudent = {
-      name: nameImput.value,
-
-    };
-    students.push(newStudent);
-    cardsOnDom(students)
-  }
-  )
-  }
-*/
-
 //Expel student
-const studentDiv = document.querySelector('#students-list');
-
-studentDiv.addEventListener('click', (event) => {
-  if(event.target.id.includes('expel')) {
+const expelStudent = (event) => {
+  // if the id includes "expel"
+  if (event.target.id.includes('expel')) {
+    // get that object id off of our target ID
     const [throwAway, studentId] = event.target.id.split('--');
+    // Use it to find the index of the object
     const indexOfStudents = students.findIndex(
-      (obj) => obj.id === Number(studentId)
+      (student) => Number(studentId) === student.id
     );
-    students.splice(indexOfStudents, 1);
-  }
 
-  cardsOnDom(students);
-});
+    // splice that object out of the array
+    const expelStudents = students.splice(indexOfStudents, 1);
+
+    // push our student into the expelledStudents array
+    expelledStudents.push(expelStudents);
+
+    // Render both of our arrays! Retired and regular.
+    voldsArmy(expelStudent);
+    cardsOnDom(students);
+  }
+};
 
 
 const startApp = () => {
