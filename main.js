@@ -76,13 +76,30 @@ const students = [
   },
 ];
 
+const expelledStudents = [
+  {
+    id: 1,
+    name: "Danny",
+    imageUrl: "Flags/the-dark-mark.jpg"
+  },
+  {
+    id: 2,
+    name: "Kumar",
+    imageUrl: "Flags/the-dark-mark.jpg"
+  },
+  {
+    id: 3,
+    name: "Meliton",
+    imageUrl: "Flags/the-dark-mark.jpg"
+  },
+];
+
 // Render to DOM utility function
 const renderToDom = (divId, htmlToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = htmlToRender;
 };
 const form = document.querySelector("form")
-const expelledStudents = [];
 
 const showStudentEntryForm = (event) => {
   event.preventDefault()
@@ -186,7 +203,7 @@ document.querySelector("#students-list").addEventListener("click", expelStudent)
       house: studentSorting.house,
       imageUrl: studentSorting.imageUrl
     };
-
+    
   students.push(newStudent);
   cardsOnDom(students);
   document.querySelector('#studentName').value = '';
@@ -194,7 +211,6 @@ document.querySelector("#students-list").addEventListener("click", expelStudent)
 
 // Voldemort army domString/cards
 const voldsArmy = (array) => {
- // array.preventDefault();
   let domString = "";
   for (const student of array) {
     domString += 
@@ -205,11 +221,13 @@ const voldsArmy = (array) => {
       </div>
     </div>`;
   }
+
   renderToDom("#expelled-students-list", domString);
 };
 
 //Expel student
 const expelStudent = (event) => {
+  event.preventDefault();
   // if the id includes "expel"
   if (event.target.id.includes('expel')) {
     // get that object id off of our target ID
@@ -224,7 +242,7 @@ const expelStudent = (event) => {
 
     // push our student into the expelledStudents array
     expelledStudents.push(expelStudents);
-
+    
     // Render both of our arrays! Retired and regular.
     voldsArmy(expelStudents);
     cardsOnDom(students);
@@ -234,7 +252,15 @@ const expelStudent = (event) => {
 
 const startApp = () => {
     cardsOnDom(students);
+    voldsArmy(expelledStudents);
   };
   
   startApp();
   
+  
+  /* const newExpelledStudent = {
+      id: expelledStudents.length + 2,
+      name: expelStudents.name,
+      imageUrl: "Flags/the-dark-mark.jpg"
+    };
+  */
